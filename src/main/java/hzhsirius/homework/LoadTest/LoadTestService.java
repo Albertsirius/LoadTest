@@ -13,13 +13,13 @@ import java.util.concurrent.Executors;
 public class LoadTestService {
 
     private LoadTestConfiguration loadTestConfiguration;
-    private Statistic statistic;
+    private Statistics statistic;
     private CountDownLatch countDownLatch;
     private Task task;
 
     public LoadTestService(LoadTestConfiguration loadTestConfiguration) {
         this.loadTestConfiguration = loadTestConfiguration;
-        this.statistic = new StatisticImpl(loadTestConfiguration.getRequestNum());
+        this.statistic = new StatisticsImpl(loadTestConfiguration.getRequestNum());
         this.task = new HttpRequestTask(loadTestConfiguration.getUri());
         countDownLatch = new CountDownLatch(loadTestConfiguration.getRequestNum());
     }
@@ -43,7 +43,7 @@ public class LoadTestService {
         printResult(statistic);
     }
 
-    private void printResult(Statistic statistic) {
+    private void printResult(Statistics statistic) {
         System.out.println("The Average request time: " + statistic.getAverage());
         System.out.println("The 95% request time: "+ statistic.getPercent(loadTestConfiguration.getPercent()));
     }

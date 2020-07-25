@@ -7,7 +7,7 @@ package hzhsirius.homework.LoadTest;
  * @author AlbertSirius
  * @since 2020/7/22
  */
-public interface Statistic {
+public interface Statistics {
 
     void collectResult(long result);
 

@@ -3,8 +3,6 @@ package hzhsirius.homework.LoadTest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.DoubleStream;
-import java.util.stream.LongStream;
 
 /**
  *
@@ -13,12 +11,12 @@ import java.util.stream.LongStream;
  * @author AlbertSirius
  * @since 2020/7/22
  */
-public class StatisticImpl implements Statistic{
+public class StatisticsImpl implements Statistics {
 
     private int requestNum;
     private List<Long> resultList;
 
-    public StatisticImpl(int requestNum){
+    public StatisticsImpl(int requestNum){
         this.requestNum = requestNum;
         resultList = new ArrayList<>(requestNum);
     }
