@@ -19,7 +19,7 @@ public class LoadTestService {
 
     public LoadTestService(LoadTestConfiguration loadTestConfiguration) {
         this.loadTestConfiguration = loadTestConfiguration;
-        this.statistic = new StatisticImpl(loadTestConfiguration.getRequestNum(), loadTestConfiguration.getPercent());
+        this.statistic = new StatisticImpl(loadTestConfiguration.getRequestNum());
         this.task = new HttpRequestTask(loadTestConfiguration.getUri());
         countDownLatch = new CountDownLatch(loadTestConfiguration.getRequestNum());
     }
@@ -40,9 +40,12 @@ public class LoadTestService {
 
         countDownLatch.await();
         executor.shutdown();
-        //statistic.printEach();
-        System.out.println("The Average Time: " + statistic.getAverage());
-        System.out.println("The 95%: " + statistic.getPercent());
+        printResult(statistic);
+    }
+
+    private void printResult(Statistic statistic) {
+        System.out.println("The Average request time: " + statistic.getAverage());
+        System.out.println("The 95% request time: "+ statistic.getPercent(loadTestConfiguration.getPercent()));
     }
 
 

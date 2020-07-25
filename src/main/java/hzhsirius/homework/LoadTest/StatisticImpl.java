@@ -16,12 +16,10 @@ import java.util.stream.LongStream;
 public class StatisticImpl implements Statistic{
 
     private int requestNum;
-    private int percent;
     private List<Long> resultList;
 
-    public StatisticImpl(int requestNum, int percent ){
+    public StatisticImpl(int requestNum){
         this.requestNum = requestNum;
-        this.percent = percent;
         resultList = new ArrayList<>(requestNum);
     }
 
@@ -40,14 +38,10 @@ public class StatisticImpl implements Statistic{
     }
 
     @Override
-    public long getPercent() {
+    public long getPercent(int percent) {
         Collections.sort(resultList);
         return resultList.get(requestNum * percent / 100);
     }
 
-    @Override
-    public void printEach() {
-        resultList.forEach( s -> System.out.println(s));
-    }
 
 }

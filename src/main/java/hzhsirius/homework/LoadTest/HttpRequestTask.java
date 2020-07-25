@@ -14,13 +14,11 @@ import java.net.http.HttpResponse;
  */
 public class HttpRequestTask implements Task{
 
-    //private HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_1_1).build();
-    //private HttpRequest httpRequest;
+
     private final String httpSchema = "http://";
     private String uri;
 
     public HttpRequestTask(String uri) {
-        //httpRequest = HttpRequest.newBuilder().uri(URI.create(httpSchema + uri)).header("Cache-Control","no-cache,no-store").build();
         this.uri = uri;
     }
 

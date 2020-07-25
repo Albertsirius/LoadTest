@@ -13,7 +13,6 @@ public interface Statistic {
 
     long getAverage();
 
-    long getPercent();
+    long getPercent(int percent);
 
-    void printEach();
 }
